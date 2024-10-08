@@ -1,0 +1,14 @@
+.vs/
+/bin/
+/bin-int/
+GLRenderer/GLRenderer.vcxproj
+<<<<<<< HEAD
+GLRenderer/GLRenderer.vcxproj.filters
+=======
+GLRenderer/GLRenderer.vcxproj.vcxproj.filters
+>>>>>>> 1d10de52bc104d5d11dcc078c9bf426ac83417ff
+GLRenderer/GLRenderer.vcxproj.user
+GLTest/GLTest.vcxproj
+GLTest/GLTest.vcxproj.user
+GLTest/GLTest.vcxproj.filters
+GLRenderer.sln
