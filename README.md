@@ -7,6 +7,7 @@ Currently this project is only supported on Windows.
 - GLEW
 - ImGui
 - StbImage
+
 All dependencies are already included.
 ## Cloning the repository
 In your chosen location open cmd from your file explorer and clone the repository by running ```git clone --recursive https://github.com/LukaLominadze/GLRenderer```
