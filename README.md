@@ -2,9 +2,7 @@
 OpenGL Renderer in C++ with Orthographic and Perspective cameras.
 ![image](https://github.com/user-attachments/assets/d2f01f08-0a85-43d1-9322-26fa7d6c0061)
 ## Platform
-Currently this project is only supported on Windows.
-## IDE
-This project only has build systems for Visual Studio 2022
+This project is supported on Windows.
 ## Dependencies
 - GLEW
 - ImGui
