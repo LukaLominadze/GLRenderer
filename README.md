@@ -22,7 +22,7 @@ From the solution folder, simply open "Setup-windows-64-vs2022.bat" to build the
 ## Building the application
 From the solution, GLTest will be set as the start up project and simply build with visual studio.
 ## About Application
-The GLRenderer test applications contains several test levels for you to choose from using the UI provided on the main screen. Simply choose any level and experiment with it.
+The GLRenderer test application contains several test levels for you to choose from using the UI provided on the main screen. Simply choose any level and experiment with it.
 
 Camera's have their own controllers
 
