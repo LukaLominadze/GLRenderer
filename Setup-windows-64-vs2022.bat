@@ -1,1 +1,0 @@
-vendor\bin\scripts\Setup-win-64-vs2022.py

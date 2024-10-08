@@ -1,1 +1,0 @@
-vendor\bin\scripts\Setup.py
