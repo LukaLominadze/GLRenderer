@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="tests">
+      <UniqueIdentifier>{78756B10-E489-93C1-AD0B-372119DF8FF2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\tests\Test.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\TestClearColor.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\TestTexture.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\TestTexture3D.h">
+      <Filter>tests</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\tests\Test.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\TestClearColor.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\TestTexture.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\TestTexture3D.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
