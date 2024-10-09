@@ -1,3 +1,5 @@
+#include "glpch.h"
+
 #include "Window.h"
 
 #include "events/ApplicationEvent.h"
@@ -12,7 +14,7 @@ Window::Window(const char* title, uint32_t width, uint32_t height)
     int initialization = glfwInit();
     ASSERT(initialization, "Initializing GLFW...");
 
-    p_window = glfwCreateWindow(960, 540, "Hello World", NULL, NULL);
+    p_window = glfwCreateWindow(960, 540, title, NULL, NULL);
     if (!p_window)
     {
         ERROR_LOG("Failed to create Window! Terminating program...");
@@ -29,10 +31,10 @@ Window::Window(const char* title, uint32_t width, uint32_t height)
         ERROR_LOG("Couldn't initialize GLEW");
     }
 
-    LOG("OpenGL Info: ");
-    LOG("  Vendor: {0} " << glGetString(GL_VENDOR));
-    LOG("  Renderer: {0} " << glGetString(GL_RENDERER));
-    LOG("  Version: {0} " << glGetString(GL_VERSION));
+    LOG("OpenGL Info: ")
+    LOG("  Vendor: {0} " << glGetString(GL_VENDOR))
+    LOG("  Renderer: {0} " << glGetString(GL_RENDERER))
+    LOG("  Version: {0} " << glGetString(GL_VERSION))
 
     GLCall(glEnable(GL_BLEND));
     GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));

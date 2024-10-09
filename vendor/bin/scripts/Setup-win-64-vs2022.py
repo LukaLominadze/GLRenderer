@@ -24,31 +24,53 @@ if platform.system() == 'Windows':
             for i, line in enumerate(lines):    
                 if "<ProjectGuid>" in line:
                     glcore_guid = line.strip().lstrip('<ProjectGuid>{').rstrip('}</ProjectGuid>').lower()
-                    insert_count += 1
                     print('Success! -> ' + glcore_guid)
-                    insert_count += 1
-                if '<ClCompile Include="src\\glpch.cpp"' in line:
-                    lines.insert(i + 1, "\t\t\t<PrecompiledHeader Condition=\"'$(Configuration)|$(Platform)'=='Debug|x64'\">Create</PrecompiledHeader>\n" +
-                                        "\t\t\t<PrecompiledHeader Condition=\"'$(Configuration)|$(Platform)'=='Release|x64'\">Create</PrecompiledHeader>\n")
-                    insert_count += 1
-                if insert_count == 2:
                     break
         
         f.close()
 
         print('\nAttempting to set reference to "GLCore" in "GLTest"...')
+        print('Attempting to set pch source as glpch.cpp...')
         with open(vcxproj_gltest, "r") as f1:
             lines1 = f1.readlines()
 
             for j, line in enumerate(lines1):
                 if '<Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />' in line:
                     lines1.insert(j, '\t<ItemGroup>\n\t\t<ProjectReference Include="..\\GLRenderer\\GLRenderer.vcxproj">\n\t\t\t<Project>{' + glcore_guid + '}</Project>\n\t\t</ProjectReference>\n\t</ItemGroup>\n')
+                    print('\nSuccess!')
                     break
-        
+                
         with open(vcxproj_gltest, "w") as f1:
             f1.writelines(lines1)
 
-        print('Success!\n')
+        with open(vcxproj_glcore, "r") as f2:
+            lines2 = f2.readlines()
+            for j, line in enumerate(lines2):
+                if '<ClCompile Include="glpch.cpp" />' in line:
+                    del lines2[j]
+                    lines2.insert(j, '\t\t<ClCompile Include="glpch.cpp">\n' +
+                                     "\t\t\t<PrecompiledHeader Condition=\"'$(Configuration)|$(Platform)'=='Debug|x64'\">Create</PrecompiledHeader>\n" +
+                                     "\t\t\t<PrecompiledHeader Condition=\"'$(Configuration)|$(Platform)'=='Distribution|x64'\">Create</PrecompiledHeader>\n" +
+                                     "\t\t\t<PrecompiledHeader Condition=\"'$(Configuration)|$(Platform)'=='Release|x64'\">Create</PrecompiledHeader>\n" +
+                                     "\t\t</ClCompile>\n")
+                    print('Success!\n')
+                    break
+        with open(vcxproj_glcore, "r") as f2:
+            for j, line in enumerate(lines2):
+                if '<ClCompile Include="src\\utils\Timer.cpp" />' in line:
+                    del lines2[j]
+                    lines2.insert(j, '\t\t<ClCompile Include="src\\utils\Timer.cpp">\n' +
+                                     "\t\t\t<PrecompiledHeader Condition=\"'$(Configuration)|$(Platform)'=='Debug|x64'\">NotUsing</PrecompiledHeader>\n" +
+                                     "\t\t\t<PrecompiledHeader Condition=\"'$(Configuration)|$(Platform)'=='Distribution|x64'\">NotUsing</PrecompiledHeader>\n" +
+                                     "\t\t\t<PrecompiledHeader Condition=\"'$(Configuration)|$(Platform)'=='Release|x64'\">NotUsing</PrecompiledHeader>\n" +
+                                     "\t\t</ClCompile>\n")
+                    break
+
+        with open(vcxproj_glcore, "w") as f2:
+            f2.writelines(lines2)
+            
+
+        
     except subprocess.CalledProcessError as e:
         print("Script failed! --- ", e)
 

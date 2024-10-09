@@ -1,3 +1,5 @@
+#include "glpch.h"
+
 #include "IndexBuffer.h"
 #include "DebugNMacros.h"
 

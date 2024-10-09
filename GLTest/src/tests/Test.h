@@ -1,12 +1,6 @@
 #pragma once
 
-#include "layers/Layer.h"
-
-#include <vector>
-#include <string>
-#include <functional>
-
-#include <iostream>
+#include <GLRenderer.h>
 
 namespace Test 
 {
@@ -30,8 +24,7 @@ namespace Test
 
 		template<typename T>
 		void RegisterTest(const std::string& name) {
-			std::cout << "Registering test... " << name << std::endl;
-
+			LOG("Registering test... " << name)
 			m_tests.push_back(std::make_pair(name, []() { return new T(); }));
 		}
 	private:

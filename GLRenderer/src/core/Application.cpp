@@ -1,12 +1,6 @@
+#include "glpch.h"
+
 #include "Application.h"
-
-#include "utils/Timer.h"
-
-#include "imgui/imgui.h"
-#include "imgui/imgui_impl_glfw.h"
-#include "imgui/imgui_impl_opengl3.h"
-
-#include <iostream>
 
 Application::Application(const char* title, uint32_t width, uint32_t height, bool vsync)
     :m_running(false)

@@ -1,7 +1,7 @@
+#include "glpch.h"
+
 #include "PerspectiveCameraController.h"
 #include "core/Input.h"
-
-#include <functional>
 
 PerspectiveCameraController::PerspectiveCameraController(float aspectRatio, float fov)
 	: m_aspectRatio(aspectRatio), m_fov(fov), m_camera(m_fov, m_aspectRatio, 0.1f, 100.0f)

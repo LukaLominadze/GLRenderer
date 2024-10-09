@@ -6,9 +6,6 @@
 #include "layers/Layer.h"
 #include "Input.h"
 
-#include <vector>
-#include <functional>
-
 class Application {
 public:
 	Application(const char* title, uint32_t width, uint32_t height, bool vsync);

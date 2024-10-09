@@ -1,7 +1,7 @@
+#include "glpch.h"
+
 #include "OrthographicCameraController.h"
 #include "core/Input.h"
-
-#include <functional>
 
 OrthographicCameraController::OrthographicCameraController(float aspectRatio, bool rotation)
 	:m_aspectRatio(aspectRatio), m_rotation(rotation), m_camera(-m_aspectRatio * m_zoom, m_aspectRatio* m_zoom, -m_zoom, m_zoom)

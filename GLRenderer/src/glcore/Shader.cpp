@@ -1,3 +1,5 @@
+#include "glpch.h"
+
 #include "Shader.h"
 #include "DebugNMacros.h"
 

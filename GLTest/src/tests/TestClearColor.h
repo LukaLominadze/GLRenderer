@@ -2,8 +2,6 @@
 
 #include "Test.h"
 
-#include "imgui/imgui.h"
-
 namespace Test
 {
 	class TestClearColor : public Test

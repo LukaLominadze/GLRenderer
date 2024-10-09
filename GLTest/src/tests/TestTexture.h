@@ -2,19 +2,6 @@
 
 #include "Test.h"
 
-#include "glcore/VertexArray.h"
-#include "glcore/VertexBuffer.h"
-#include "glcore/IndexBuffer.h"
-#include "glcore/Shader.h"
-#include "glcore/Texture.h"
-
-#include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp"
-
-#include "glcore/OrthographicCameraController.h"
-
-#include "imgui/imgui.h"
-
 namespace Test
 {
 	class TestTexture : public Test

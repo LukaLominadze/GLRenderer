@@ -1,3 +1,5 @@
+#include "glpch.h"
+
 #include "Input.h"
 
 Input* Input::s_instance = nullptr;

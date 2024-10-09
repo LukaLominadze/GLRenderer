@@ -26,7 +26,7 @@ namespace Test
 		p_testMenu = new TestMenu(p_currentTest);
 		p_currentTest = p_testMenu;
 		p_testMenu->RegisterTest<TestClearColor>("Clear Color");
-		p_testMenu->RegisterTest<TestTexture>("Texture");
+		p_testMenu->RegisterTest<TestTexture>("Texture 2D");
 		p_testMenu->RegisterTest<TestTexture3D>("Texture3D");
 	}
 

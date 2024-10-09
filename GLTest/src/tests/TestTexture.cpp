@@ -88,9 +88,10 @@ namespace Test
     }
     void TestTexture::OnImGuiRender()
     {
-        ImGui::Begin("Hello, world!");
+        ImGui::Begin("Welcome to 2D!");
 
-        ImGui::Text("This is some useful text.");
+        ImGui::Text("WASD - Move");
+        ImGui::Text("Scroll - Zoom I/O");
 
         ImGui::SliderFloat("TranslationX", &m_translation.x, -3.0f, 3.0f);
         ImGui::SliderFloat("TranslationY", &m_translation.y, -2.0f, 2.0f);

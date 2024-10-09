@@ -1,7 +1,8 @@
 workspace "GLRenderer"
 	configurations {
 		"Debug",
-		"Release"
+		"Release",
+		"Distribution"
 	}
 
 	flags
@@ -47,6 +48,9 @@ project "GLRenderer"
 	removefiles { "%{prj.name}/src/vendor/glm/glm.cppm",
 				  "%{prj.name}/src/vendor/imgui/main.cpp" }
 
+	pchheader "glpch.h"
+	pchsource "glpch.cpp"
+
 	includedirs { "%{prj.name}",
 				  "%{prj.name}/src",
 				  "%{prj.name}/src/vendor",
@@ -64,6 +68,9 @@ project "GLRenderer"
 		"Release"
 	}
 
+	filter "files:**/vendor/**.cpp"
+        flags { "NoPCH" }
+
 	filter "system:windows"
 		systemversion "latest"
 
@@ -77,6 +84,13 @@ project "GLRenderer"
 	filter "configurations:Release"
 		
 		defines { "NDEBUG" }
+
+		architecture "x64"
+		optimize "on"
+	
+	filter "configurations:Distribution"
+
+		defines { "DISTRIBUTION" }
 
 		architecture "x64"
 		optimize "on"
@@ -138,6 +152,15 @@ project "GLTest"
 	filter "configurations:Release"
 		
 		defines { "NDEBUG" }
+
+		architecture "x64"
+		optimize "on"
+
+	filter "configurations:Distribution"
+		
+		kind "WindowedApp"
+
+		defines { "DISTRIBUTION" }
 
 		architecture "x64"
 		optimize "on"

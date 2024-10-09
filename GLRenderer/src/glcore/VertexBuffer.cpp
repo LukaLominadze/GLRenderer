@@ -1,3 +1,5 @@
+#include "glpch.h"
+
 #include "VertexBuffer.h"
 #include "DebugNMacros.h"
 

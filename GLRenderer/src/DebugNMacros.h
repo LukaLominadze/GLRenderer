@@ -11,10 +11,15 @@
 					std::cerr << "Failed!" << std::endl; \
 					__debugbreak(); \
 				}
-	#define LOG(message) std::cout << message << std::endl
-	#define ERROR_LOG(message) \
-		std::cout << message << std::endl; \
-		__debugbreak()
+	#ifdef DISTRIBUTION
+		#define LOG(message)
+		#define ERROR_LOG(message) __debugbreak()
+	#else
+		#define LOG(message) std::cout << message << std::endl;
+		#define ERROR_LOG(message) \
+			std::cout << message << std::endl; \
+			__debugbreak()
+	#endif
 	#ifdef _DEBUG
 		#define GLCall(x) x; ASSERT_ERROR(GLLogCall(#x, __FILE__, __LINE__))
 		#define DEBUG_LOG(message) \
@@ -34,10 +39,6 @@
 		#define GLCall(x) x;
 	#endif
 #endif
-
-inline void GLClearError() {
-    while (glGetError() != GL_NO_ERROR);
-}
 
 #ifdef _DEBUG
 inline bool GLLogCall(const char* function, const char* file, int line) {
