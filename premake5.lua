@@ -30,6 +30,7 @@ project "GLRenderer"
 	defines { "GL_PLATFORM_WINDOWS", "GLEW_STATIC" }
 	
 	files {
+		"%{prj.name}/**.h",
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/src/**.hpp",
