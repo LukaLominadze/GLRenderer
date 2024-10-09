@@ -11,6 +11,7 @@ OpenGL Renderer in C++ featuring:
 This project is supported on Windows. Visual Studio 2022 Recommended.
 ## Dependencies
 - GLEW
+- GLFW
 - ImGui
 - StbImage
 
