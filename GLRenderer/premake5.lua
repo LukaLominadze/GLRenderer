@@ -5,8 +5,8 @@ project "GLRenderer"
 	language "C++"
 	cppdialect "C++20"
 
-	targetdir ("%{wks.location}/bin/" ..outputdir.. "/%{prj.name}")	
-	objdir ("%{wks.location}/bin-int/" ..outputdir.. "/%{prj.name}")
+	targetdir ("../bin/" ..outputdir.. "/%{prj.name}")	
+	objdir ("../bin-int/" ..outputdir.. "/%{prj.name}")
 
 	defines { "GL_PLATFORM_WINDOWS", "GLEW_STATIC" }
 	
@@ -35,10 +35,10 @@ project "GLRenderer"
 
 	includedirs { "src",
 				  "src/vendor",
-				  "%{wks.location}/Dependencies/GLFW/include",
-				  "%{wks.location}/Dependencies/GLEW/include" }
-	libdirs { "%{wks.location}/Dependencies/GLFW/lib-vc2022",
-			  "%{wks.location}/Dependencies/GLEW/lib/Release/x64" }
+				  "../Dependencies/GLFW/include",
+				  "../Dependencies/GLEW/include" }
+	libdirs { "../Dependencies/GLFW/lib-vc2022",
+			  "../Dependencies/GLEW/lib/Release/x64" }
 
 	links { "glew32s.lib",
 			"glfw3.lib",
