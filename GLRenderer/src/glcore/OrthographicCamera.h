@@ -16,9 +16,9 @@ public:
 	inline const glm::vec3& GetPosition() const { return m_position; }
 	inline const float GetRotation() const { return m_rotation; }
 
-	const glm::mat4& GetProjectionMatrix() const { return m_projectionMatrix; }
-	const glm::mat4& GetViewMatrix() const { return m_viewMatrix; }
-	const glm::mat4& GetViewProjectionMatrix() const { return m_viewProjectionMatrix; }
+	inline const glm::mat4& GetProjectionMatrix() const { return m_projectionMatrix; }
+	inline const glm::mat4& GetViewMatrix() const { return m_viewMatrix; }
+	inline const glm::mat4& GetViewProjectionMatrix() const { return m_viewProjectionMatrix; }
 private:
 	void RecalculateViewMatrix();
 private:

@@ -43,7 +43,7 @@ namespace Test
         m_ibo.Unbind();
         p_shader->Unbind();
 
-        m_clearColor = ImVec4(0.0f, 0.0f, 0.0f, 1.0f);
+        m_clearColor = ImVec4(19.0f / 255.0f, 18.0f / 255.0f, 18.0f / 255.0f, 1.0f);
         m_imageColor = ImVec4(1.0f, 1.0f, 1.0f, 1.00f);
 
         m_translation = glm::vec3(0, 0, 0);

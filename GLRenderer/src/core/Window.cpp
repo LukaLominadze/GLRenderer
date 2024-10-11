@@ -9,16 +9,26 @@
 
 GLFWwindow* Window::s_nativeWindow = nullptr;
 
-Window::Window(const char* title, uint32_t width, uint32_t height)
+Window::Window(const char* title, uint32_t width, uint32_t height, bool fullscreen = false)
 {
     int initialization = glfwInit();
     ASSERT(initialization, "Initializing GLFW...");
 
-    p_window = glfwCreateWindow(960, 540, title, NULL, NULL);
+    p_window = glfwCreateWindow(width, height, title, NULL, NULL);
     if (!p_window)
     {
         ERROR_LOG("Failed to create Window! Terminating program...");
         glfwTerminate();
+    }
+
+    p_monitor = glfwGetPrimaryMonitor();
+
+    m_data.Fullscreen = fullscreen;
+    if (m_data.Fullscreen) {
+        const GLFWvidmode* mode = glfwGetVideoMode(p_monitor);
+        m_data.Width = mode->width;
+        m_data.Height = mode->height;
+        glfwSetWindowMonitor(p_window, p_monitor, 0, 0, m_data.Width, m_data.Height, mode->refreshRate);
     }
 
     glfwMakeContextCurrent(p_window);
@@ -47,6 +57,16 @@ Window::Window(const char* title, uint32_t width, uint32_t height)
         WindowClosedEvent event;
         data.EventCallback(event);
     });
+
+    glfwSetWindowSizeCallback(p_window, [](GLFWwindow* window, int width, int height)
+        {
+            WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+            data.Width = width;
+            data.Height = height;
+
+            WindowResizedEvent event(width, height);
+            data.EventCallback(event);
+        });
 
     glfwSetKeyCallback(p_window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
         {
@@ -120,6 +140,12 @@ void Window::SetVSync(bool value)
         glfwSwapInterval(0);
 }
 
+void Window::OnEvent(Event& e)
+{
+    EventDispatcher dispatcher = EventDispatcher(e);
+    dispatcher.Dispatch<KeyPressedEvent>(std::bind(&Window::OnFullscreenToggle, this, std::placeholders::_1));
+}
+
 void Window::OnUpdate()
 {
     glfwPollEvents();
@@ -129,4 +155,21 @@ void Window::OnUpdate()
 void Window::Delete()
 {
     glfwDestroyWindow(p_window);
+}
+
+bool Window::OnFullscreenToggle(KeyPressedEvent& e)
+{
+    if (e.GetKeyCode() != GLFW_KEY_F11)
+        return false;
+    m_data.Fullscreen = !m_data.Fullscreen;
+    const GLFWvidmode* mode = glfwGetVideoMode(p_monitor);
+    if (m_data.Fullscreen) {
+        glfwSetWindowMonitor(p_window, p_monitor, 0, 0, mode->width, mode->height, mode->refreshRate);
+    }
+    else {
+        int xpos = (mode->width / m_data.Width) / 2;
+        int ypos = (mode->height / m_data.Height) / 2 + 40;
+        glfwSetWindowMonitor(p_window, NULL, xpos, ypos, m_data.Width, m_data.Height, 0);
+    }
+    return true;
 }

@@ -22,9 +22,9 @@ public:
 	inline float GetYaw() const { return m_yaw; }
 	inline float GetPitch() const { return m_pitch; }
 
-	const glm::mat4& GetProjectionMatrix() const { return m_projectionMatrix; }
-	const glm::mat4& GetViewMatrix() const { return m_viewMatrix; }
-	const glm::mat4& GetViewProjectionMatrix() const { return m_viewProjectionMatrix; }
+	inline const glm::mat4& GetProjectionMatrix() const { return m_projectionMatrix; }
+	inline const glm::mat4& GetViewMatrix() const { return m_viewMatrix; }
+	inline const glm::mat4& GetViewProjectionMatrix() const { return m_viewProjectionMatrix; }
 private:
 	void RecalculateViewMatrix();
 private:

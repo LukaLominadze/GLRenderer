@@ -19,6 +19,7 @@ namespace Test
 				p_currentTest = test.second();
 			}
 		}
+		ImGui::Text("Press F11 for Fullscreen!");
 	}
 
 	TestLayer::TestLayer()

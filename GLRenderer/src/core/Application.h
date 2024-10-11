@@ -8,7 +8,7 @@
 
 class Application {
 public:
-	Application(const char* title, uint32_t width, uint32_t height, bool vsync);
+	Application(const char* title, uint32_t width, uint32_t height, bool vsync, bool fullscreen);
 	~Application();
 
 	void Run();

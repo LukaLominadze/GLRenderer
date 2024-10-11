@@ -2,10 +2,10 @@
 
 #include "Application.h"
 
-Application::Application(const char* title, uint32_t width, uint32_t height, bool vsync)
+Application::Application(const char* title, uint32_t width, uint32_t height, bool vsync, bool fullscreen = false)
     :m_running(false)
 {
-    p_window = new Window(title, width, height);
+    p_window = new Window(title, width, height, fullscreen);
     p_window->SetEventCallback(std::bind(&Application::OnEvent, this, std::placeholders::_1));
     p_window->SetVSync(vsync);
 
@@ -82,6 +82,7 @@ void Application::OnEvent(Event& event)
 {
     if (event.GetEventType() == EventType::WindowClose)
         m_running = false;
+    p_window->OnEvent(event);
     for (int i = m_layerStack.size() - 1; i >= 0; i--) {
         m_layerStack[i]->OnEvent(event);
     }

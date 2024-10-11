@@ -13,3 +13,5 @@ GLTest/GLTest.vcxproj.user
 GLTest/GLTest.vcxproj.filters
 GLRenderer.sln
 releases/
+GLRenderer/imgui.ini
+GLTest/imgui.ini

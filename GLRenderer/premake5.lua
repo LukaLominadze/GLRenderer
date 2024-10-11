@@ -23,8 +23,13 @@ project "GLRenderer"
 	}
 
 	vpaths {
-		["Source Files"] = "src/**.cpp",
-		["Header Files/*"] = { "src/**.h", "src/**.hpp" }
+		["Core"] = { "src/core/**.cpp", "src/core/**.h" },
+		["Events"] = { "src/events/**.cpp", "src/events/**.h" },
+		["GLCore"] = { "src/glcore/**.cpp", "src/glcore/**.h" },
+		["Layers"] = { "src/layers/**.cpp", "src/layers/**.h" },
+		["Utils"] = { "src/utils/**.cpp", "src/utils/**.h" },
+		["Vendor"] = { "src/vendor/**.hpp", "src/vendor/**.h", "src/vendor/**.cpp" },
+		["General"] = { "glpch.cpp", "glpch.h", "GLRenderer.h" }
 	}
 
 	removefiles { "src/vendor/glm/glm.cppm",
