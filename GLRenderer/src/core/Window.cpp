@@ -28,8 +28,8 @@ Window::Window(const char* title, uint32_t width, uint32_t height, bool fullscre
         const GLFWvidmode* mode = glfwGetVideoMode(p_monitor);
         m_data.Width = mode->width;
         m_data.Height = mode->height;
-        glViewport(0, 0, m_data.Width, m_data.Height);
         glfwSetWindowMonitor(p_window, p_monitor, 0, 0, m_data.Width, m_data.Height, mode->refreshRate);
+        glViewport(0, 0, m_data.Width, m_data.Height);
     }
 
     glfwMakeContextCurrent(p_window);
@@ -166,6 +166,7 @@ bool Window::OnFullscreenToggle(KeyPressedEvent& e)
     const GLFWvidmode* mode = glfwGetVideoMode(p_monitor);
     if (m_data.Fullscreen) {
         glfwSetWindowMonitor(p_window, p_monitor, 0, 0, mode->width, mode->height, mode->refreshRate);
+        glViewport(0, 0, mode->width, mode->height);
     }
     else {
         int xpos = (mode->width / m_data.Width) / 2;
