@@ -26,6 +26,7 @@ namespace Test
 		OrthographicCameraController m_cameraController;
 
 		glm::vec3 m_translation;
+		glm::vec3 m_scale;
 	};
 }
 

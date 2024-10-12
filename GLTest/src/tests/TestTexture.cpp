@@ -47,6 +47,7 @@ namespace Test
         m_imageColor = ImVec4(1.0f, 1.0f, 1.0f, 1.00f);
 
         m_translation = glm::vec3(0, 0, 0);
+        m_scale = glm::vec3(1, 1, 1);
 	}
 
 	TestTexture::~TestTexture()
@@ -75,6 +76,7 @@ namespace Test
     void TestTexture::OnRender(Renderer& renderer)
     {
         glm::mat4 model = glm::translate(glm::mat4(1.0f), m_translation);
+        model = glm::scale(model, m_scale);
         glm::mat4 mvp = m_cameraController.GetCamera().GetViewProjectionMatrix() * model;
 
         GLCall(glClearColor(m_clearColor.x, m_clearColor.y, m_clearColor.z, m_clearColor.w));
@@ -95,7 +97,9 @@ namespace Test
 
         ImGui::SliderFloat("TranslationX", &m_translation.x, -3.0f, 3.0f);
         ImGui::SliderFloat("TranslationY", &m_translation.y, -2.0f, 2.0f);
-        ImGui::SliderFloat("TranslationZ", &m_translation.z, -2.0f, 2.0f); 
+        ImGui::SliderFloat("TranslationZ", &m_translation.z, -2.0f, 2.0f);
+        ImGui::SliderFloat("ScaleX", &m_scale.x, -2.0f, 5.0f);
+        ImGui::SliderFloat("ScaleY", &m_scale.y, -2.0f, 5.0f);
         ImGui::ColorEdit3("Clear Color", (float*)&m_clearColor);
         ImGui::ColorEdit3("Image Color", (float*)&m_imageColor); 
 
