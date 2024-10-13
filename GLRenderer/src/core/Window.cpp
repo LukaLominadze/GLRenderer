@@ -14,14 +14,14 @@ Window::Window(const char* title, uint32_t width, uint32_t height, bool fullscre
     int initialization = glfwInit();
     ASSERT(initialization, "Initializing GLFW...");
 
-    p_monitor = glfwGetPrimaryMonitor();
-    p_window = glfwCreateWindow(width, height, title, p_monitor, NULL);
+    p_window = glfwCreateWindow(width, height, title, NULL, NULL);
     if (!p_window)
     {
         ERROR_LOG("Failed to create Window! Terminating program...");
         glfwTerminate();
     }
 
+    p_monitor = glfwGetPrimaryMonitor();
 
     m_data.Fullscreen = fullscreen;
     if (m_data.Fullscreen) {
