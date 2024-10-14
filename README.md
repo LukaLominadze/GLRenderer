@@ -6,7 +6,11 @@ OpenGL Renderer in C++ featuring:
 - UI
 - Test Levels
 
-![image](https://github.com/user-attachments/assets/d2f01f08-0a85-43d1-9322-26fa7d6c0061)
+
+
+https://github.com/user-attachments/assets/af748614-a488-4b05-a36f-bdcac03253fc
+
+
 ## Platform
 This project is supported on Windows. Visual Studio 2022 Recommended.
 ## Dependencies
